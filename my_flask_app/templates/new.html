@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Cafeteria</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background" class="fullscreen-bg image" style="filter: blur(3px);">
+
+    </div>
+    <form>
+        
+        <h2 style="text-align: center; color: #f5f5dc" >A Lot Can Happen Over COFFEE!!!</h2>
+
+        <label for="username" style="color: #f5f5dc">Name</label>
+        <input type="text" placeholder="Enter your name" id="username">
+
+        <label for="username" style="color: #f5f5dc">Phone Number</label>
+        <input type="text" placeholder="Enter phone number" id="username">
+
+        <label for="table" style="color: #f5f5dc">Table Number</label>
+        <input type="text" placeholder="Enter table number" id="table">
+
+        <button>Let's Goooooo!!!</button>
+
+        
+        
+    </form>
+</body>
+</html>
