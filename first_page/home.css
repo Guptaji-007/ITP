@@ -1,6 +1,6 @@
 /* Reset CSS */
 * {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ body {
 }
 
 header h1 {
-  margin-bottom: 10px;
+  margin: 0 auto 10 auto;
 }
 
 nav ul {
@@ -44,21 +44,6 @@ padding: 320px 20px;
 .hero h2 {
   font-size: 36px;
   margin-bottom: 20px;
-}
-
-.btn {
-  display: inline-block;
-  background: #ff4500;
-  color: #fff;
-  padding: 10px 20px;
-  margin-top: 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #ff6347;
 }
 
 .featured-dishes {
@@ -148,10 +133,32 @@ html {
 
 .body2 {
   background-color:#e5eaf5; /* Dark background color */
-  color:#913f92; /* Text color */
+  color:#0d465d; /* Text color */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+/* #be1d55 */
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minus-btn,
+.plus-btn {
+  background-color: #023965a4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+}
+
+.item-count {
+  margin: 0 10px;
+  font-size: 1.2em;
+}
 
 
+.btn-primary:hover {
+  background-color: #1c2658; 
+}
