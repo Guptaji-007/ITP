@@ -13,7 +13,7 @@
     <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background" class="fullscreen-bg image" style="filter: blur(3px);">
 
     </div>
-    <form>
+    <form action="{{ url_for('home') }}" method="GET">
         
         <h2 style="text-align: center; color: #f5f5dc" >A Lot Can Happen Over COFFEE!!!</h2>
 
@@ -26,7 +26,7 @@
         <label for="table" style="color: #f5f5dc">Table Number</label>
         <input type="text" placeholder="Enter table number" id="table">
 
-        <button>Let's Goooooo!!!</button>
+        <a href="{{url_for('home')}}"><button>Let's Goooooo!!!</button></a>
 
         
         
