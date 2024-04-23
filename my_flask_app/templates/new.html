@@ -13,23 +13,20 @@
     <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background" class="fullscreen-bg image" style="filter: blur(3px);">
 
     </div>
-    <form action="{{ url_for('home') }}" method="GET">
-        
-        <h2 style="text-align: center; color: #f5f5dc" >A Lot Can Happen Over COFFEE!!!</h2>
-
-        <label for="username" style="color: #f5f5dc">Name</label>
-        <input type="text" placeholder="Enter your name" id="username">
-
-        <label for="username" style="color: #f5f5dc">Phone Number</label>
-        <input type="text" placeholder="Enter phone number" id="username">
-
-        <label for="table" style="color: #f5f5dc">Table Number</label>
-        <input type="text" placeholder="Enter table number" id="table">
-
-        <a href="{{url_for('home')}}"><button>Let's Goooooo!!!</button></a>
-
-        
-        
+<div>
+    <form action="/submit" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+    
+        <label for="phno">Phone Number</label>
+        <input type="number" name="phno" id="phno" required>
+    
+        <label for="table">Table Number</label>
+        <input type="number" name="table" id="table" required>
+    
+        <button type="submit">LETS GOOOOOOO</button>
     </form>
+    
+</div>
 </body>
 </html>
