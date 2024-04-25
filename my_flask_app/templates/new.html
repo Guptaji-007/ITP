@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+  <head>
     <title>Cafeteria</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background" class="fullscreen-bg image" style="filter: blur(3px);">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <img
+      src="{{ url_for('static', filename='image/cafe.jpeg') }}"
+      alt="Full Screen Background"
+      class="fullscreen-bg image"
+      style="filter: blur(3px)"
+    />
 
-    </div>
-<div>
-    <form action="/submit" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required>
-    
-        <label for="phno">Phone Number</label>
-        <input type="number" name="phno" id="phno" required>
-    
-        <label for="table">Table Number</label>
-        <input type="number" name="table" id="table" required>
-    
-        <button type="submit">LETS GOOOOOOO</button>
+    <form action="/validate_form" method="post">
+      {{ form.csrf_token }}
+
+      <h2 style="text-align: center; color: #f5f5dc">
+        A Lot Can Happen Over COFFEE!!!
+      </h2>
+
+      <label for="name" style="color: #f5f5dc">Name</label>
+      {{ form.name }}
+
+      <label for="phone_number" style="color: #f5f5dc">Phone Number</label>
+      {{ form.phone_number }}
+
+      <label for="table_number" style="color: #f5f5dc">Table Number</label>
+      {{ form.table_number }}
+
+      <button type="submit">Let's Goooooo!!!</button>
     </form>
-    
-</div>
-</body>
+  </body>
 </html>
