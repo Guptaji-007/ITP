@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for , session,request
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Length, NumberRange
@@ -38,9 +38,24 @@ def index():
 def home():
     return render_template('home.html')
 
+
+total_items_food=0
+
+@app.route('/update_total_items_food', methods=['GET'])
+def update_total_items_food():
+    global total_items_food
+    total_items_food = int(request.args.get('total_items_food', 0))
+    return 'Total items updated'  
+
 @app.route('/home/atc')
 def atc():
-    return render_template('atc.html')
+    global total_items_food
+    if total_items_food != 0:
+        return render_template('atc.html')
+    else:
+        # Redirect to another route or render a different template if no items in cart
+        return render_template("home.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
