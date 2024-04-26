@@ -1,35 +1,59 @@
-let total_items_food = 0;
-document.addEventListener('DOMContentLoaded', function() {
-    const plusButtons = document.querySelectorAll('.plus-btn');
-    const minusButtons = document.querySelectorAll('.minus-btn');
-    plusButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        const itemCountSpan = this.parentNode.querySelector('.item-count');
-        let itemCount = parseInt(itemCountSpan.textContent);
-        itemCount++;
-        itemCountSpan.textContent = itemCount;
-        total_items_food++;
-        updateTotalItemsFood(total_items_food);
-      });  });
-    minusButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        const itemCountSpan = this.parentNode.querySelector('.item-count');
-        let itemCount = parseInt(itemCountSpan.textContent);
-        if (itemCount > 0) {
-          itemCount--;
-          itemCountSpan.textContent = itemCount;
-          total_items_food--;
-          updateTotalItemsFood(total_items_food);
-        } }); }); });
+// Define an empty object to store data
+var obj = {};
 
-function updateTotalItemsFood(count) {
-  fetch(`/update_total_items_food?total_items_food=${count}`)  // Send an AJAX request to update total items on the server
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to update total items');
+document.addEventListener("DOMContentLoaded", function () {
+  // Select all plus and minus buttons
+  const plusButtons = document.querySelectorAll(".plus-btn");
+  const minusButtons = document.querySelectorAll(".minus-btn");
+  const itemCountSpans = document.querySelectorAll(".item-count");
+  const foodNames = document.querySelectorAll(".dish-name");
+  const foodPrices = document.querySelectorAll(".dish-price");
+
+  // Event listener for plus buttons
+  plusButtons.forEach(function (button, index) {
+    button.addEventListener("click", function () {
+      let itemCount = parseInt(itemCountSpans[index].textContent);
+      itemCount++;
+      itemCountSpans[index].textContent = itemCount;
+      updateObject(index, itemCount); // Update 'obj' with current data
+    });
+  });
+
+  // Event listener for minus buttons
+  minusButtons.forEach(function (button, index) {
+    button.addEventListener("click", function () {
+      let itemCount = parseInt(itemCountSpans[index].textContent);
+      if (itemCount > 0) {
+        itemCount--;
+        itemCountSpans[index].textContent = itemCount;
+        updateObject(index, itemCount); // Update 'obj' with current data
       }
-      return response.text();
+    });
+  });
+
+  // Function to update the 'obj' object with current data
+  function updateObject(index, itemCount) {
+    obj[foodNames[index].textContent] = {
+      price: foodPrices[index].textContent,
+      quantity: itemCount,
+    };
+    console.log(obj); // Output the updated 'obj' to console
+
+    // Send 'obj' data to Flask server when updated
+    sendDataToFlask(obj);
+  }
+
+  // Function to send 'obj' data to Flask server
+  function sendDataToFlask(obj) {
+    fetch("/process_data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
     })
-    .then(data => console.log(data)) // Print response from server
-    .catch(error => console.error(error)); // Log any errors
-}
+      .then((response) => response.json())
+      .then((data) => console.log(data)) // Log response data from server
+      .catch((error) => console.error("Error:", error));
+  }
+});

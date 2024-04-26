@@ -4,6 +4,7 @@ from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Length, NumberRange
 import pymysql
 import os
+import asyncio  
 # Establish MySQL connection
 timeout = 10
 conn = pymysql.connect(
@@ -29,10 +30,11 @@ class ReservationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     phone_number = StringField('Phone Number', validators=[DataRequired(), Length(min=10, max=10)])
     table_number = IntegerField('Table Number', validators=[DataRequired(), NumberRange(min=1)])
-
+phone = ''
 # Form validation route
 @app.route('/validate_form', methods=['POST'])
 def form_validation():
+    global phone
     form = ReservationForm()
 
     if form.validate_on_submit():
@@ -52,8 +54,9 @@ def form_validation():
 
             # Commit changes and close connection
             conn.commit()
+            table_name=str(phone)
+            cursor.execute(f"CREATE TABLE IF NOT EXISTS `{table_name}` (Item VARCHAR(225) NOT NULL,Quantity INT ,Price INT, PRIMARY KEY (Item));")
 
-            conn.close()
             return render_template("home.html")
 
         except Exception as e:
@@ -71,17 +74,80 @@ def index():
 
 total_items_food=0
 
-@app.route('/update_total_items_food', methods=['GET'])
-def update_total_items_food():
-    global total_items_food
-    total_items_food = int(request.args.get('total_items_food', 0))
-    return 'Total items updated'  
+# @app.route('/update_total_items_food', methods=['GET'])
+# def update_total_items_food():
+#     global total_items_food
+#     total_items_food = int(request.args.get('total_items_food', 0))
+#     return 'Total items updated'  
+continuous_data=[]
+@app.route('/process_data', methods=['POST'])
+def process_data():
+    global continuous_data
+    try:
+        
+        # Retrieve JSON data from the request
+        data = request.get_json()
+        print('Received data from client:', data)
+        continuous_data.append(data)
 
-@app.route('/home/atc')
+        # Process the received data as needed...
+
+        return jsonify({'message': 'Data received successfully', 'data': data}), 200
+    except Exception as e:
+        error_message = {'error': str(e)}
+        return jsonify(error_message), 500
+
+# item_list={}
+# # Process continuous data updates
+# for update in continuous_data:
+#     item_name = next(iter(update))  # Get the item name (main key)
+#     item_info = update[item_name]   # Get the associated info dictionary
+
+#     if item_name in item_list:
+#         # Item already exists in the list, update the quantity
+#         item_list[item_name]['quantity'] += item_info['quantity']
+#     else:
+#         # Item is not in the list, add it to the list
+#         item_list[item_name] = item_info
+
+
+
+@app.route('/validate_form/atc', methods=['POST'])
 def atc():
-    global total_items_food
-    if total_items_food !=0:
-        return render_template('atc.html')
+    # global total_items_food
+    # if total_items_food !=0:
+    item_list={}
+    global phone
+    # Process continuous data updates
+    for update in continuous_data:
+        item_name = next(iter(update))  # Get the item name (main key)
+        item_info = update[item_name]   # Get the associated info dictionary
+
+        if item_name in item_list:
+            # Item already exists in the list, update the quantity
+            item_list[item_name]['quantity'] += item_info['quantity']
+        else:
+            # Item is not in the list, add it to the list
+            item_list[item_name] = item_info
+    if item_list!={}:
+        try:
+            # Print the updated item list
+            for item_name, item_info in item_list.items():
+                Item=item_name
+                price=item_info['price']
+                quantity=item_info['quantity']
+                # print(f"Item: {item_name}, Price: {item_info['price']}, Quantity: {item_info['quantity']}")
+                # Execute SQL query to update quantity
+                table_name=str(phone)
+                update_query = f"INSERT INTO `{table_name}` (Item, Quantity,Price) VALUES (%s, %s, %s);"
+                cursor.execute(update_query, (Item,quantity,price))
+                
+                # Commit changes
+                conn.commit()
+            return render_template("atc.html")
+
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
     else:
         # Redirect to another route or render a different template if no items in cart
         return render_template("home.html")
