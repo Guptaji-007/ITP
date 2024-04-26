@@ -4,46 +4,18 @@ from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Length, NumberRange
 import pymysql
 import os
-from dotenv import load_dotenv
-dotenv_path = '\makefile.env'
-loaded = load_dotenv(dotenv_path)
-
-if loaded:
-    print("Environment variables loaded successfully")
-else:
-    print("Failed to load environment variables")
-# Load environment variables from .env file
-# os.environ["DB_HOST"] = "mysql-14da71f7-devmittal9705-d8fc.d.aivencloud.com"
-# os.environ["DB_USER"] = "avnadmin"
-# os.environ["DB_PASSWORD"] = "AVNS_M8EGsbDUEeMajooE7YC"
-# os.environ["DB_PORT"] = "22874"
-# os.environ["DB_NAME"] = "WEBSITE"
-print(os.getenv("DB_HOST"))
-print(os.getenv("DB_USER"))
-print(os.getenv("DB_PASSWORD"))
-print(os.getenv("DB_PORT"))
-print(os.getenv("DB_NAME"))
-
-# Access environment variables
-db_host = os.environ.get("DB_HOST")
-db_user = os.environ.get("DB_USER")
-db_password = os.environ.get("DB_PASSWORD")
-db_port = int(os.environ.get("DB_PORT"))
-db_name = os.environ.get("DB_NAME")
-
-
 # Establish MySQL connection
 timeout = 10
 conn = pymysql.connect(
 charset="utf8mb4",
 connect_timeout=timeout,
 cursorclass=pymysql.cursors.DictCursor,
-db=db_name,
-host=db_host,
-password=db_password,
+db="WEBSITE",
+host="mysql-14da71f7-devmittal9705-d8fc.d.aivencloud.com",
+password="AVNS_M8EGsbDUEeMajooE7YC",
 read_timeout=timeout,
-port=db_port,
-user=db_user,
+port=22874,
+user="avnadmin",
 write_timeout=timeout,
 )
 cursor = conn.cursor()
