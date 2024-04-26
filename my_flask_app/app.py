@@ -69,32 +69,6 @@ def index():
     form = ReservationForm()
     return render_template('new.html', form=form)
 
-# @app.route('/validate_form', methods=['post'])
-# def submit():
-#     try:
-#     # Get user input from the form
-#         name = request.form['name']
-#         phone = request.form['phno']
-#         table = request.form['table']
-#         print("Name:", name)
-#         print("Phone Number:", phone)
-#         print("Table Number:", table)
-
-        
-#         # Prepare SQL statement with user input
-#         sql = "INSERT INTO info (Name, PhoneNo, TableNo) VALUES (%s, %s,%s);"
-#         cursor.execute(sql, (name, phone,table))
-
-#         # Commit changes and close connection
-#         conn.commit()
-
-#         conn.close()
-#         return render_template("home.html")
-
-#     except Exception as e:
-#         return f'Error: {str(e)}'
-
-
 total_items_food=0
 
 @app.route('/update_total_items_food', methods=['GET'])
@@ -106,7 +80,7 @@ def update_total_items_food():
 @app.route('/home/atc')
 def atc():
     global total_items_food
-    if total_items_food != 0:
+    if total_items_food !=0:
         return render_template('atc.html')
     else:
         # Redirect to another route or render a different template if no items in cart
