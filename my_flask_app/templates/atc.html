@@ -68,47 +68,12 @@
         <h1 style="text-align: center">Cart Details</h1>
         <br /><br />
         <div class="cart-items">
-          <div class="cart-item">
-            <div class="product-image">
-              <img
-                src="{{ url_for('static', filename='image/dish1.jpeg') }}"
-                alt="Product 1 Image"
-              />
-            </div>
-            <div class="product-info">
-              <h2>Product 1 Name</h2>
-              <p>
-                Description: Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit.
-              </p>
-              <p>Price: ₹19.99</p>
-              <p>Quantity: 2</p>
-              <p>Total: ₹39.98</p>
-            </div>
+          {% for item_name, item_info in data1.items() %} {% include
+            "fooditem.html" %} {% endfor %}
+
+              
           </div>
-          <div class="cart-item">
-            <div class="product-image">
-              <img
-                src="{{ url_for('static', filename='image/dish1.jpeg') }}"
-                alt="Product 2 Image"
-              />
-            </div>
-            <div class="product-info">
-              <h2>Product 2 Name</h2>
-              <p>
-                Description: Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit.
-              </p>
-              <p>Price: ₹24.99</p>
-              <p>Quantity: 1</p>
-              <p>Total: ₹24.99</p>
-            </div>
-          </div>
-        </div>
-        <div class="total">
-          <h2>Total: ₹64.97</h2>
-        </div>
-        <div>
+          
           <a href=""><button>Place Order</button></a>
         </div>
       </div>

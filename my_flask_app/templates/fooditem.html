@@ -1,0 +1,23 @@
+<div
+  class="border-bottom row"
+  style="margin-top: 4px; margin-bottom: 8px; padding-bottom: 4px"
+>
+  <div class="col-10">
+    <div class="cart-item">
+      <div class="product-image">
+        <img
+          src="{{ url_for('static', filename='image/dish1.jpeg') }}"
+          alt="Product 1 Image"
+        />
+      </div>
+      <div class="product-info">
+        <h2>{{item_name}}</h2>
+        <p>Price: {{item_info['price']}}</p>
+        <p>Quantity: {{item_info['quantity']}}</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div>Total</div>
+    </div>
+  </div>
+</div>

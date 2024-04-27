@@ -116,7 +116,7 @@ def atc():
 
                 # Commit changes
                 conn.commit()
-            return render_template("atc.html")
+            return render_template("atc.html",data1=data)
 
         except Exception as e:
             return jsonify({'error': str(e)}), 500

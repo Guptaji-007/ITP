@@ -152,3 +152,12 @@ html {
 .btn-primary:hover {
   background-color: #1c2658; 
 }
+.brown-border-btn {
+  border: 2px solid brown; /* Sets the border to brown color */
+  padding: 10px 20px; /* Adjust padding according to your design */
+  background-color: transparent; /* Makes the background transparent */
+  color: black; /* Sets text color */
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  /* Add any other styles as needed */
+}
