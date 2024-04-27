@@ -3,5 +3,4 @@ gunicorn
 pymysql
 flask_wtf 
 wtforms 
-os
 asyncio
