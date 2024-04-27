@@ -79,16 +79,15 @@ total_items_food=0
 #     global total_items_food
 #     total_items_food = int(request.args.get('total_items_food', 0))
 #     return 'Total items updated'  
-continuous_data=[]
+data={}
 @app.route('/process_data', methods=['POST'])
 def process_data():
-    global continuous_data
+    global data
     try:
         
         # Retrieve JSON data from the request
         data = request.get_json()
         print('Received data from client:', data)
-        continuous_data.append(data)
 
         # Process the received data as needed...
 
@@ -97,42 +96,15 @@ def process_data():
         error_message = {'error': str(e)}
         return jsonify(error_message), 500
 
-# item_list={}
-# # Process continuous data updates
-# for update in continuous_data:
-#     item_name = next(iter(update))  # Get the item name (main key)
-#     item_info = update[item_name]   # Get the associated info dictionary
-
-#     if item_name in item_list:
-#         # Item already exists in the list, update the quantity
-#         item_list[item_name]['quantity'] += item_info['quantity']
-#     else:
-#         # Item is not in the list, add it to the list
-#         item_list[item_name] = item_info
-
-
 
 @app.route('/validate_form/atc', methods=['POST'])
 def atc():
-    # global total_items_food
-    # if total_items_food !=0:
-    item_list={}
+    global data
     global phone
-    # Process continuous data updates
-    for update in continuous_data:
-        item_name = next(iter(update))  # Get the item name (main key)
-        item_info = update[item_name]   # Get the associated info dictionary
-
-        if item_name in item_list:
-            # Item already exists in the list, update the quantity
-            item_list[item_name]['quantity'] += item_info['quantity']
-        else:
-            # Item is not in the list, add it to the list
-            item_list[item_name] = item_info
-    if item_list!={}:
+    if data!={}:
         try:
             # Print the updated item list
-            for item_name, item_info in item_list.items():
+            for item_name, item_info in data.items():
                 Item=item_name
                 price=item_info['price']
                 quantity=item_info['quantity']
@@ -141,7 +113,7 @@ def atc():
                 table_name=str(phone)
                 update_query = f"INSERT INTO `{table_name}` (Item, Quantity,Price) VALUES (%s, %s, %s);"
                 cursor.execute(update_query, (Item,quantity,price))
-                
+
                 # Commit changes
                 conn.commit()
             return render_template("atc.html")
@@ -151,6 +123,7 @@ def atc():
     else:
         # Redirect to another route or render a different template if no items in cart
         return render_template("home.html")
+
 
 
 if __name__ == '__main__':

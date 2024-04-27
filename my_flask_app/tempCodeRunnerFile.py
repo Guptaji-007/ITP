@@ -15,8 +15,9 @@ connection = pymysql.connect(
 )
 
 cur = connection.cursor()
-# cur.execute("CREATE TABLE info( Name varchar(225) , PhoneNo int, TableNo int NOT NULL, PRIMARY KEY(PhoneNo))")
+# cur.execute("CREATE TABLE info( Name varchar(225) , PhoneNo varchar(10), TableNo int NOT NULL, PRIMARY KEY(PhoneNo))")
 # cur.execute("DELETE FROM info;")
+# cur.execute("DROP TABLE  info;")
 # cur.execute("INSERT INTO info (Name, PhoneNo, TableNo) VALUES ('DEV',9,69);")
 # connection.commit()
 cur.execute("Select * from info;")
