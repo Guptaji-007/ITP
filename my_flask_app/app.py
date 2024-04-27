@@ -6,6 +6,8 @@ import pymysql
 import os
 import asyncio  
 # Establish MySQL connection
+
+
 timeout = 10
 conn = pymysql.connect(
 charset="utf8mb4",
