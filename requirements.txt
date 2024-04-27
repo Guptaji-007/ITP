@@ -1,15 +1,7 @@
 Flask
 gunicorn
 pymysql
-render_template
-redirect
-jsonify
-request
-url_for
-session
 flask_wtf 
 wtforms 
-wtforms.validators 
-pymysql
 os
 asyncio
