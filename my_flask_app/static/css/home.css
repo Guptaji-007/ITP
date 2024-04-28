@@ -1,6 +1,6 @@
 /* Reset CSS */
 * {
-  margin: 0 ;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -45,8 +45,9 @@ nav ul li a {
 }
 
 .dish img {
-  width: 100%;
-  max-width: 300px;
+
+  width: 230px;
+  height: 170px;
   border-radius: 5px;
 }
 
@@ -63,6 +64,7 @@ nav ul li a {
   left: 320px;
   padding: 10px 20px;
 }
+
 .top-right {
   position: absolute;
   font-family: ROBOTO;
@@ -76,7 +78,7 @@ nav ul li a {
 }
 
 header1 {
-  background:beige;
+  background: beige;
   padding: 10px;
   position: fixed;
   top: 0;
@@ -113,20 +115,23 @@ html {
 
 
 .nav-link {
-  color: brown; 
+  color: brown;
 }
 
 .nav-link.active {
-  color: brown; 
+  color: brown;
 }
 
 .body2 {
-  background-color:#e5eaf5; /* Dark background color */
-  color:#0d465d; /* Text color */
+  background-color: #e5eaf5;
+  /* Dark background color */
+  color: #0d465d;
+  /* Text color */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+
 /* #be1d55 */
 .add-to-cart {
   display: flex;
@@ -149,14 +154,21 @@ html {
 
 
 .btn-primary:hover {
-  background-color: #1c2658; 
+  background-color: #1c2658;
 }
+
 .brown-border-btn {
-  border: 2px solid brown; /* Sets the border to brown color */
-  padding: 10px 20px; /* Adjust padding according to your design */
-  background-color: transparent; /* Makes the background transparent */
-  color: black; /* Sets text color */
-  font-size: 16px; /* Adjust font size */
-  cursor: pointer; /* Changes cursor to pointer on hover */
+  border: 2px solid brown;
+  /* Sets the border to brown color */
+  padding: 10px 20px;
+  /* Adjust padding according to your design */
+  background-color: transparent;
+  /* Makes the background transparent */
+  color: black;
+  /* Sets text color */
+  font-size: 16px;
+  /* Adjust font size */
+  cursor: pointer;
+  /* Changes cursor to pointer on hover */
   /* Add any other styles as needed */
 }

@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart Details</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-    <style>
-      body {
-        color: #fff;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      .cart-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-      }
 
-      .cart-item:last-child {
-        margin-bottom: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <style>
+    body {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-      .product-image {
-        flex: 1;
-        max-width: 100px;
-        margin-right: 20px;
-        border-radius: 50%;
-      }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-      .product-image img {
-        max-width: 100%;
-        height: auto;
-      }
+    .cart-item:last-child {
+      margin-bottom: 0;
+    }
 
-      .product-info {
-        flex: 2;
-      }
+    .product-image {
+      flex: 1;
+      max-width: 100px;
+      margin-right: 20px;
+      border-radius: 50%;
+    }
 
-      .product-info h2 {
-        margin-top: 0;
-      }
+    .product-image img {
+      max-width: 100%;
+      height: auto;
+    }
 
-      .product-info p {
-        margin: 5px 0;
-      }
+    .product-info {
+      flex: 2;
+    }
 
-      .total {
-        text-align: right;
-        margin-top: 30px;
-      }
-    </style>
-  </head>
+    .product-info h2 {
+      margin-top: 0;
+    }
 
-  <body>
-    <img
-      src="{{ url_for('static', filename='image/cafe.jpeg') }}"
-      alt="Full Screen Background"
-      class="fullscreen-bg image"
-      style="filter: blur(0px)"
-    />
-    <form style="width: auto; height: auto">
-      <div>
-        <h1 style="text-align: center">Cart Details</h1>
-        <br /><br />
-        <div class="cart-items">
-          {% for item_name, item_info in data1.items() %} {% include
-            "fooditem.html" %} {% endfor %}
+    .product-info p {
+      margin: 5px 0;
+    }
 
-              
-          </div>
-          
-          <a href=""><button>Place Order</button></a>
-        </div>
+    .total {
+      text-align: right;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background"
+    class="fullscreen-bg image" style="filter: blur(0px)" />
+  <form style="width: auto; height: auto">
+    <div>
+      <h1 style="text-align: center">Cart Details</h1>
+      <br /><br />
+      <div class="cart-items">
+        {% for item_name, item_info in data1.items() %} {% include
+        "fooditem.html" %} {% endfor %}
+
+
       </div>
-    </form>
-  </body>
+
+      <a href=""><button>Place Order</button></a>
+    </div>
+    </div>
+  </form>
+</body>
+
 </html>

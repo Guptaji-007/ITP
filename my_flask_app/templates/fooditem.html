@@ -1,14 +1,16 @@
-<div
-  class="border-bottom row"
-  style="margin-top: 4px; margin-bottom: 8px; padding-bottom: 4px"
->
+<div class="border-bottom row" style="margin-top: 4px; margin-bottom: 8px; padding-bottom: 4px">
   <div class="col-10">
     <div class="cart-item">
       <div class="product-image">
-        <img
-          src="{{ url_for('static', filename='image/dish1.jpeg') }}"
-          alt="Product 1 Image"
-        />
+        {% if item_name == 'Paneer Tikka' %}
+        <img src="{{ url_for('static', filename='image/dish1.jpeg') }}" alt="Product 1 Image" />
+        {% elif item_name == 'Cappuccino Coffee' %}
+        <img src="{{ url_for('static', filename='image/dish2.jpeg') }}" alt="Product 2 Image" />
+        {% elif item_name == 'Maggie' %}
+        <img src="{{ url_for('static', filename='image/dish3.jpeg') }}" alt="Product 3 Image" />
+        {% elif item_name == 'Masala Chai' %}
+        <img src="{{ url_for('static', filename='image/dish4.jpeg') }}" alt="Product 4 Image" />
+        {% endif %}
       </div>
       <div class="product-info">
         <h2>{{item_name}}</h2>
