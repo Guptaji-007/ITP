@@ -110,6 +110,9 @@ def atc():
                 Item=item_name
                 price=item_info['price']
                 quantity=item_info['quantity']
+                total = int(price) * int(quantity)  # Calculate total price
+                item_info['total'] =str(total )  # Add total price to item_info dictionary
+
                 # print(f"Item: {item_name}, Price: {item_info['price']}, Quantity: {item_info['quantity']}")
                 # Execute SQL query to update quantity
                 table_name=str(phone)
