@@ -32,11 +32,16 @@ class ReservationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     phone_number = StringField('Phone Number', validators=[DataRequired(), Length(min=10, max=10)])
     table_number = IntegerField('Table Number', validators=[DataRequired(), NumberRange(min=1)])
+
+name=''
+table=''
 phone = ''
 # Form validation route
 @app.route('/validate_form', methods=['POST'])
 def form_validation():
     global phone
+    global name
+    global table
     form = ReservationForm()
 
     if form.validate_on_submit():
@@ -103,6 +108,8 @@ def process_data():
 def atc():
     global data
     global phone
+    global name
+    global table
     if data!={}:
         try:
             # Print the updated item list
@@ -116,9 +123,11 @@ def atc():
                 # print(f"Item: {item_name}, Price: {item_info['price']}, Quantity: {item_info['quantity']}")
                 # Execute SQL query to update quantity
                 table_name=str(phone)
+                cursor.execute(f"DELETE FROM `{table_name}`;")
                 update_query = f"INSERT INTO `{table_name}` (Item, Quantity,Price) VALUES (%s, %s, %s);"
-                cursor.execute(update_query, (Item,quantity,price))
-
+                update_query = f"INSERT INTO Aditya (Name,PhoneNo,TableNo,Item, Quantity,Price,Total) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+                cursor.execute(update_query, (name,phone,table,Item,quantity,price,total))
+                cursor.execute("DELETE FROM info;")
                 # Commit changes
                 conn.commit()
             return render_template("atc.html",data1=data)
