@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-/* Basic Styles */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -64,19 +63,6 @@ nav ul li a {
   left: 320px;
   padding: 10px 20px;
 }
-
-.top-right {
-  position: absolute;
-  font-family: ROBOTO;
-  top: 200px;
-  right: 450px;
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-}
-
 header1 {
   background: beige;
   padding: 10px;
@@ -124,15 +110,12 @@ html {
 
 .body2 {
   background-color: #e5eaf5;
-  /* Dark background color */
   color: #0d465d;
-  /* Text color */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* #be1d55 */
 .add-to-cart {
   display: flex;
   align-items: center;
@@ -152,23 +135,15 @@ html {
   font-size: 1.2em;
 }
 
-
 .btn-primary:hover {
   background-color: #1c2658;
 }
 
 .brown-border-btn {
   border: 2px solid brown;
-  /* Sets the border to brown color */
   padding: 10px 20px;
-  /* Adjust padding according to your design */
   background-color: transparent;
-  /* Makes the background transparent */
   color: black;
-  /* Sets text color */
   font-size: 16px;
-  /* Adjust font size */
   cursor: pointer;
-  /* Changes cursor to pointer on hover */
-  /* Add any other styles as needed */
 }

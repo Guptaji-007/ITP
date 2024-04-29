@@ -11,7 +11,7 @@
 
 <body>
   <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background"
-    class="fullscreen-bg image" style="filter: blur(3px)" />
+    class="fullscreen-bg" style="filter: blur(3px)" />
 
   <form action="/validate_form" method="post">
     {{ form.csrf_token }}
