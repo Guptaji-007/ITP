@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,10 +29,9 @@ class _EventListState extends State<EventList> {
     },
     {
       "name": "All Orders",
-      "link": "http://10.128.2.21:5000",
+      "link": "https://aditya-1.onrender.com",
       "description": "All orders to make"
     },
-
   ];
 
   void _addEvent(String name, String link, String description) {
@@ -84,7 +83,11 @@ class _EventListState extends State<EventList> {
             child: ListTile(
               title: Text(events[index]['name']),
               subtitle: Text(events[index]['description']),
-              onTap: () => _launchURL(events[index]['link']),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => EventWebView(url: events[index]['link']),
+                ));
+              },
             ),
           );
         },
@@ -96,14 +99,6 @@ class _EventListState extends State<EventList> {
         child: Icon(Icons.add),
       ),
     );
-  }
-
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   void _showAddEventDialog(BuildContext context) {
@@ -129,8 +124,8 @@ class AddEventDialog extends StatefulWidget {
 
 class _AddEventDialogState extends State<AddEventDialog> {
   final TextEditingController _eventNameController = TextEditingController();
-  final TextEditingController _eventLinkController = TextEditingController();
   final TextEditingController _eventDescriptionController = TextEditingController();
+  final TextEditingController _eventLinkController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -182,5 +177,24 @@ class _AddEventDialogState extends State<AddEventDialog> {
     _eventDescriptionController.dispose();
     _eventLinkController.dispose();
     super.dispose();
+  }
+}
+
+class EventWebView extends StatelessWidget {
+  final String url;
+
+  const EventWebView({Key? key, required this.url}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Event Details'),
+      ),
+      body: WebView(
+        initialUrl: url,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
+    );
   }
 }
