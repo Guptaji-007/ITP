@@ -115,7 +115,8 @@ def atc():
     global final_total
     if data!={}:
         try:
-            # Print the updated item list
+            final_total=0
+            # Print the updated ite m list
             for item_name, item_info in data.items():
                 Item=item_name
                 price=item_info['price']
