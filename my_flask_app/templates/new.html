@@ -1,46 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Cafeteria</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
-    />
-  </head>
-  <body>
-    <img
-      src="{{ url_for('static', filename='image/cafe.jpeg') }}"
-      alt="Full Screen Background"
-      class="fullscreen-bg image"
-      style="filter: blur(3px)"
-    />
 
-    <form action="/validate_form" method="post">
-      {{ form.csrf_token }}
+<head>
+  <title>Cafeteria</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
 
-      <h2 style="text-align: center; color: #f5f5dc">
-        A Lot Can Happen Over COFFEE!!!
-      </h2>
+<body>
+  <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background"
+    class="fullscreen-bg image" style="filter: blur(3px)" />
 
-      <label for="name" style="color: #f5f5dc">Name</label>
-      {{ form.name }}
+  <form action="/validate_form" method="post">
+    {{ form.csrf_token }}
 
-      <label for="phone_number" style="color: #f5f5dc">Phone Number</label>
-      {{ form.phone_number }}
+    <h2 style="text-align: center; color: #f5f5dc">
+      A Lot Can Happen Over COFFEE!!!
+    </h2>
 
-      <label for="table_number" style="color: #f5f5dc">Table Number</label>
-      {{ form.table_number }}
+    <label for="name" style="color: #f5f5dc">Name</label>
+    {{ form.name }}
 
-      <button type="submit">Let's Goooooo!!!</button>
-    </form>
-  </body>
+    <label for="phone_number" style="color: #f5f5dc">Phone Number</label>
+    {{ form.phone_number }}
+
+    <label for="table_number" style="color: #f5f5dc">Table Number</label>
+    {{ form.table_number }}
+
+    <button type="submit">Let's Goooooo!!!</button>
+  </form>
+</body>
+
 </html>

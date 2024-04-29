@@ -33,7 +33,7 @@
 
     .product-image img {
       max-width: 100%;
-      height: auto;
+      height: 100%;
     }
 
     .product-info {
@@ -58,7 +58,8 @@
 <body>
   <img src="{{ url_for('static', filename='image/cafe.jpeg') }}" alt="Full Screen Background"
     class="fullscreen-bg image" style="filter: blur(0px)" />
-  <form style="width: auto; height: auto">
+  <form style="width: auto; height: auto" action="/validate_form/atc/final" method="post">
+
     <div>
       <h1 style="text-align: center">Cart Details</h1>
       <br /><br />
@@ -66,12 +67,13 @@
         {% for item_name, item_info in data1.items() %} {% include
         "fooditem.html" %} {% endfor %}
 
-
       </div>
-
-      <a href=""><button>Place Order</button></a>
-    </div>
-    </div>
+      <div class="total">
+        <b>TOTAL: ₹{{final_total}}</b>
+      </div>
+      <div>
+        <h2><button type="submit">Place order</button></h2>
+      </div>
   </form>
 </body>
 

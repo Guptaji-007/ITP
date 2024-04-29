@@ -104,12 +104,15 @@ def process_data():
         return jsonify(error_message), 500
 
 
+final_total=0
+
 @app.route('/validate_form/atc', methods=['POST'])
 def atc():
     global data
     global phone
     global name
     global table
+    global final_total
     if data!={}:
         try:
             # Print the updated item list
@@ -119,6 +122,9 @@ def atc():
                 quantity=item_info['quantity']
                 total = int(price) * int(quantity)  # Calculate total price
                 item_info['total'] =str(total )  # Add total price to item_info dictionary
+
+                
+                final_total+=total
 
                 # print(f"Item: {item_name}, Price: {item_info['price']}, Quantity: {item_info['quantity']}")
                 # Execute SQL query to update quantity
@@ -130,7 +136,7 @@ def atc():
                 cursor.execute("DELETE FROM info;")
                 # Commit changes
                 conn.commit()
-            return render_template("atc.html",data1=data)
+            return render_template("atc.html",data1=data,final_total=final_total)
 
         except Exception as e:
             return jsonify({'error': str(e)}), 500
@@ -138,7 +144,10 @@ def atc():
         # Redirect to another route or render a different template if no items in cart
         return render_template("home.html")
 
-
+@app.route('/validate_form/atc/final',methods=['post'])
+def final():
+    return render_template("final.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
