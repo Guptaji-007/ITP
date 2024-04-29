@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, jsonify, request,url_for , session
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms.validators import DataRequired, Length, NumberRange ,Regexp
 import pymysql
 import os
 import asyncio  
@@ -30,7 +30,11 @@ app.config['SECRET_KEY'] = SECRET_KEY  # Required by Flask-WTF
 # Define the form class
 class ReservationForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    phone_number = StringField('Phone Number', validators=[DataRequired(), Length(min=10, max=10)])
+    phone_number = StringField('Phone Number', validators=[
+        DataRequired(),
+        Length(min=10, max=10),
+        Regexp('^[0-9]*$', message='Phone number must contain only numerical digits')
+    ])
     table_number = IntegerField('Table Number', validators=[DataRequired(), NumberRange(min=1)])
 
 name=''
@@ -79,7 +83,7 @@ def index():
     form = ReservationForm()
     return render_template('new.html', form=form)
 
-total_items_food=0
+# total_items_food=0
 
 # @app.route('/update_total_items_food', methods=['GET'])
 # def update_total_items_food():

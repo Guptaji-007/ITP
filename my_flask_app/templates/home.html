@@ -86,7 +86,7 @@
             <h3 class="mt-3 dish-name"><b>Paneer Tikka</b></h3>
             <div>
               <b>₹</b><span class="dish-price"><b>200</b></span>
-            </div>          
+            </div>
             <div class="add-to-cart">
               <button class="btn btn-primary minus-btn">-</button>
               <span class="item-count">0</span>
@@ -102,56 +102,56 @@
             <h3 class="mt-3 dish-name"><b>Maggie</b></h3>
             <div>
               <b>₹</b><span class="dish-price"><b>120</b></span>
-            </div>  
+            </div>
             <div class="add-to-cart">
               <button class="btn btn-primary minus-btn">-</button>
               <span class="item-count">0</span>
               <button class="btn btn-primary plus-btn">+</button>
             </div>
-              <b> Items Added </b>
+            <b> Items Added </b>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="dish">
+            <img class="shadow p-3 bg-body-tertiary rounded" src="{{ url_for('static', filename='image/dish3.jpeg') }}"
+              alt="Dish 3" />
+            <h3 class="mt-3 dish-name"><b>Cappuccino Coffee</b></h3>
+            <div>
+              <b>₹</b><span class="dish-price"><b>150</b></span>
             </div>
-           
+            <div class="add-to-cart">
+              <button class="btn btn-primary minus-btn">-</button>
+              <span class="item-count">0</span>
+              <button class="btn btn-primary plus-btn">+</button>
+            </div>
+            <b> Items Added </b>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="dish">
+            <img class="shadow p-3 bg-body-tertiary rounded" src="{{ url_for('static', filename='image/dish4.jpeg') }}"
+              alt="Dish 4" />
+            <h3 class="mt-3 dish-name"><b>Masala Chai</b></h3>
+            <div>
+              <b>₹</b><span class="dish-price"><b>100</b></span>
+            </div>
+            <div class="add-to-cart">
+              <button class="btn btn-primary minus-btn">-</button>
+              <span class="item-count">0</span>
+              <button class="btn btn-primary plus-btn">+</button>
+            </div>
+            <b> Items Added </b>
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <div class="dish">
-              <img class="shadow p-3 bg-body-tertiary rounded"
-                src="{{ url_for('static', filename='image/dish3.jpeg') }}" alt="Dish 3" />
-              <h3 class="mt-3 dish-name"><b>Cappuccino Coffee</b></h3>
-              <div>
-                <b>₹</b><span class="dish-price"><b>150</b></span>
-              </div>   
-              <div class="add-to-cart">
-                <button class="btn btn-primary minus-btn">-</button>
-                <span class="item-count">0</span>
-                <button class="btn btn-primary plus-btn">+</button>
-              </div>
-              <b> Items Added </b>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="dish">
-              <img class="shadow p-3 bg-body-tertiary rounded"
-                src="{{ url_for('static', filename='image/dish4.jpeg') }}" alt="Dish 4" />
-              <h3 class="mt-3 dish-name"><b>Masala Chai</b></h3>
-              <div>
-                <b>₹</b><span class="dish-price"><b>100</b></span>
-              </div>   
-              <div class="add-to-cart">
-                <button class="btn btn-primary minus-btn">-</button>
-                <span class="item-count">0</span>
-                <button class="btn btn-primary plus-btn">+</button>
-              </div>
-              <b> Items Added </b>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
     </div>
     <div class="text-center mt-3 mb-3">
       <form action="/validate_form/atc" method="POST">
@@ -167,7 +167,7 @@
     <center style="color: #31473a">
       <br />
       <h2>About Us</h2>
-      <br />
+
       <p style="color: #31473a">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla
         voluptatum nisi neque, ex, maxime eum facere harum amet consequuntur
@@ -177,10 +177,18 @@
         numquam unde provident aspernatur illo alias eos, sed quas consequatur
         nulla voluptatem!
       </p>
-      <br />
+
+      <div class="text-left mt-3">
+        <h3>Contact Us</h3>
+        <p >Email:cafeteria@gmail.com Phone number:9876543210</p>
+         <!-- <p style="font-size: 15px"> Phone number:9876543210</p> -->
+      </div>
+      <br>
     </center>
   </section>
 
+
+  
   <div class="text-center mt-3">
     <p style="font-size: 15px">Copyright @All right are reserved,2024</p>
   </div>
