@@ -15,20 +15,6 @@ header h1 {
   margin: 0 auto 10 auto;
 }
 
-nav ul {
-  list-style-type: none;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
 .hero h2 {
   font-size: 36px;
   margin-bottom: 20px;
@@ -117,7 +103,7 @@ html {
 }
 
 .add-to-cart {
-  display: flex;
+  display: flex; /* allows you to easily distribute space among flex items within the flex container. */
   align-items: center;
   justify-content: center;
 }
